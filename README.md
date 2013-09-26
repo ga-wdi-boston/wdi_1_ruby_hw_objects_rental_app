@@ -32,6 +32,7 @@ You will be creating an app that models the rental process. The premise is that 
 |Apartment - attribute|type|
 |:----------|:-----------|
 |number|integer|
+|rent|integer|
 |sqft|integer|
 |num_beds|integer|
 |renters|array of person objects|
@@ -54,7 +55,7 @@ You will be creating an app that models the rental process. The premise is that 
 - Create a class for a Building that will have these attributes
   (address,style, number of floors and apartments)
 - Create a class for an Apartment that will have these attributes
-  (number, square feet, number of bedrooms and renters)
+  (number, rent, square feet, number of bedrooms and renters)
 - Create a class for a Person that will have these attributes (name,
   age, gender and apartment)
 - Create one or more buildings, *Building instances*, and ask the user
