@@ -1,7 +1,7 @@
 #Title: Rental App
 
 ###Type:
-- Lab / Homeowrk
+- Homework
 
 ###Time Required: 
 - 2 hours+
@@ -11,17 +11,16 @@
 - Hashes & Arrays
 - Blocks
 - OOP
-- Multi-file project (require_relative)
 
 ###Objectives:
 - Practice creating and initializing objects
 
 ###Activity:
-As a class, you will be creating an app that models the rental process. The premise is that "Owners of buildings can rent apartments to potential tenants". This app should be created using a code-along style.
+You will be creating an app that models the rental process. The premise is that "Owners of buildings can rent apartments to potential tenants".
 
-* Ask students "What types of objects might you have in an app that manages rentals?"
+* "What types of objects might you have in an app that manages rentals?"
   * Settle on a list that includes building, person, and apartment
-* Ask students "What types of things will each of these do (verbs)? Or what will define them (nouns)? And what type will each be?"
+* "What types of things will each of these do (verbs)? Or what will define them (nouns)? And what type will each be?"
 
 |Building - attribute|type|
 |:----------|:-----------|
@@ -54,11 +53,31 @@ As a class, you will be creating an app that models the rental process. The prem
 * Write a main.rb file that allows you to build and add new objects
 
 ###Explanation
-- This is a multi-file project that has a main file for working with the objects, and each class as separate files.  Students are expected to build this from ground-up, and perhaps starting with the main.rb file.
+- This is a multi-file project that has a main file for working with
+  the objects, and each class as separate files.  Students are
+  expected to build this from ground-up, and perhaps starting with the
+  main.rb file.
 
 ###Specification:
-- n/a
+- Create a class for a Building that will have these attributes
+  (address, ,style, has_doorman, is_walkup, mum_floors, apartments)
+- Create a class for an Apartment that will have these attributes (address, style, has_doorman, is_walkup, num_floors, apartments)
+- Create a class for a Person that will have these attributes (name,
+  age, gender, apartment)
+- Create one or more buildings, *Building instances*, by asking the user for the building's style,
+  address and floor.
+- In each of these buildings add apartments by asking the user for an
+  apartment's square feet and number of bedrooms.
+- In each of these apartments add people/renters by asking the user
+  for a person's name, age and gender.
+- For each building calculate the average age of people living in this
+  building and print this value out.
+- For each apartment calculate the density people per square foot  of the people living
+  there. And print this value out.
+- For each apartment in a building calculate how much each
+  person/renter should pay for rent if they all split the rent
+  equally. And print this value out.
 
-###Post-mortem:
-- What worked?
-- Student misunderstandings?
+
+
+
