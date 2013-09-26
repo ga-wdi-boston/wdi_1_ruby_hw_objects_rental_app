@@ -26,18 +26,14 @@ You will be creating an app that models the rental process. The premise is that 
 |:----------|:-----------|
 |address|string|
 |style|string|
-|has_doorman|boolean|
-|is_walkup|boolean|
 |num_floors|integer|
 |apartments|array of apartment objects|
 
 |Apartment - attribute|type|
 |:----------|:-----------|
-|price|decimal|
-|is_occupied|boolean|
+|number|integer|
 |sqft|integer|
 |num_beds|integer|
-|num_baths|integer|
 |renters|array of person objects|
 
 |Person (assume tenants or prospective tenants)|type|
@@ -56,16 +52,17 @@ You will be creating an app that models the rental process. The premise is that 
 
 ###Specification:
 - Create a class for a Building that will have these attributes
-  (address, ,style, has_doorman, is_walkup, mum_floors, apartments)
-- Create a class for an Apartment that will have these attributes (address, style, has_doorman, is_walkup, num_floors, apartments)
+  (address,style, number of floors and apartments)
+- Create a class for an Apartment that will have these attributes
+  (number, square feet, number of bedrooms and renters)
 - Create a class for a Person that will have these attributes (name,
-  age, gender, apartment)
-- Create one or more buildings, *Building instances*, by asking the user for the building's style,
-  address and floor.
+  age, gender and apartment)
+- Create one or more buildings, *Building instances*, and ask the user
+  for it's attributes
 - In each of these buildings add apartments by asking the user for an
-  apartment's square feet and number of bedrooms.
+  apartment's attributes.
 - In each of these apartments add people/renters by asking the user
-  for a person's name, age and gender.
+  for the renter/person's attributes and what apartment they rent.
 - For each building calculate the average age of people living in this
   building and print this value out.
 - For each apartment calculate the density people per square foot  of the people living
