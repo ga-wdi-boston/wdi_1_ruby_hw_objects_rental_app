@@ -42,7 +42,6 @@ You will be creating an app that models the rental process. The premise is that 
 |name|string|
 |age|integer|
 |gender|string|
-|apartment|apartment object|
 
 * Write attr_accessors for each object
 * Write initialize methods for each object
@@ -68,7 +67,7 @@ You will be creating an app that models the rental process. The premise is that 
   building and print this value out. *Use a method for this calculation*
 - For each apartment calculate the density people per square foot  of the people living
   there. And print this value out. *Use a method for this calculation*
-- For each apartment in a building calculate how much each
+- For each apartment in a building calculate how much eachp
   person/renter should pay for rent if they all split the rent
   equally. And print this value out. *Use a method for this calculation*
 
