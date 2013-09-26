@@ -2,7 +2,10 @@ class Building
 	attr_accessor :address, :style, :num_floors, :apartments
 
 	def initialize
-
+		@address = address
+		@style = style
+		@nun_floors = num_floors
+		@apartments = apartments
 	end
 
 	def to_s
@@ -15,7 +18,11 @@ class Apartment
 	attr_accessor :number, :rent, :sqft, :num_beds, :renters
 
 	def initialize
-		
+		@number = number
+		@rent = rent
+		@sqft = sqft
+		@num_beds = num_beds
+		@renters = renters
 	end
 
 	def to_s
@@ -27,7 +34,9 @@ class Person
 	attr_accessor :name, :age, :gender
 
 	def initialize
-		
+		@name = name
+		@age = age
+		@gender = gender
 	end
 
 	def to_s
