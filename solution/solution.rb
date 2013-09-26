@@ -2,10 +2,12 @@ class Building
 	attr_accessor :address, :style, :num_floors, :apartments
 
 	def initialize
-		@address = address
-		@style = style
+		@apartments = []
+
+		@address = "address"
+		@style = "style"
 		@nun_floors = num_floors
-		@apartments = apartments
+		@apartments = [apartments]
 	end
 
 	def to_s
@@ -18,11 +20,13 @@ class Apartment
 	attr_accessor :number, :rent, :sqft, :num_beds, :renters
 
 	def initialize
+		@renters = []
+
 		@number = number
 		@rent = rent
 		@sqft = sqft
 		@num_beds = num_beds
-		@renters = renters
+		@renters = [renters]
 	end
 
 	def to_s
@@ -34,12 +38,14 @@ class Person
 	attr_accessor :name, :age, :gender
 
 	def initialize
-		@name = name
+		@name = "name"
 		@age = age
-		@gender = gender
+		@gender = "gender"
 	end
 
 	def to_s
 		"I want to rent an apartment, please."
 	end
 end
+
+holland_st = Building("")
