@@ -50,13 +50,9 @@ You will be creating an app that models the rental process. The premise is that 
 * Write attr_accessors for each object
 * Write initialize methods for each object
 * Write to_s methods for each object
-* Write a main.rb file that allows you to build and add new objects
 
 ###Explanation
-- This is a multi-file project that has a main file for working with
-  the objects, and each class as separate files.  Students are
-  expected to build this from ground-up, and perhaps starting with the
-  main.rb file.
+- Students are expected to build this from ground-up.
 
 ###Specification:
 - Create a class for a Building that will have these attributes
