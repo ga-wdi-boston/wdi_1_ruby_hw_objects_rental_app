@@ -26,17 +26,17 @@ class Apartment
 		@rent = rent
 		@sqft = sqft
 		@num_beds = num_beds
-		@renters << Person.new()
-		@renters << Person.new()
-		@renters << Person.new()
-		@renters << Person.new()
-		@renters << Person.new()
-		@renters << Person.new()
-		@renters << Person.new()
-		@renters << Person.new()
-		@renters << Person.new()
-		@renters << Person.new()
-		@renters << Person.new()
+		@renters << Person.new('Arthur', 35, 'male')
+		@renters << Person.new('Boris', 83, 'male')
+		@renters << Person.new('Caroline', 12, 'female')
+		@renters << Person.new('Daphne', 78, 'female')
+		@renters << Person.new('Ellen', 56, 'female')
+		@renters << Person.new('Fred', 61, 'male')
+		@renters << Person.new('George', 40, 'male')
+		@renters << Person.new('Harriet', 38, 'female')
+		@renters << Person.new('Isabelle', 25, 'female')
+		@renters << Person.new('Justin', 28, 'male')
+		@renters << Person.new('Kelsey', 25, 'female')
 
 	end
 
