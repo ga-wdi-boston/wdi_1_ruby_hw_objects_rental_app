@@ -57,12 +57,9 @@ You will be creating an app that models the rental process. The premise is that 
   (number, rent, square feet, number of bedrooms and renters)
 - Create a class for a Person that will have these attributes (name,
   age, gender and apartment)
-- Create one or more buildings, *Building instances*, and ask the user
-  for it's attributes
-- In each of these buildings add apartments by asking the user for an
-  apartment's attributes.
-- In each of these apartments add people/renters by asking the user
-  for the renter/person's attributes.
+- Create one or more buildings, *Building instances*, and add it's attributes
+- In each of these buildings add apartments and each apartment's attributes.
+- In each of these apartments add people/renters.
 - For each building calculate the average age of people living in this
   building and print this value out. *Use a method for this calculation*
 - For each apartment calculate the density people per square foot  of the people living
