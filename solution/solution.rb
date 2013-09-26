@@ -6,7 +6,7 @@ class Building
 
 		@address = "address"
 		@style = "style"
-		@nun_floors = num_floors
+		@num_floors = num_floors
 		@apartments = [apartments]
 	end
 
@@ -26,12 +26,27 @@ class Apartment
 		@rent = rent
 		@sqft = sqft
 		@num_beds = num_beds
-		@renters = [renters]
+		@renters << Person.new()
+		@renters << Person.new()
+		@renters << Person.new()
+		@renters << Person.new()
+		@renters << Person.new()
+		@renters << Person.new()
+		@renters << Person.new()
+		@renters << Person.new()
+		@renters << Person.new()
+		@renters << Person.new()
+		@renters << Person.new()
+
 	end
 
 	def to_s
 		"Check me out, I'm an apartment to live in."
 	end
+
+	def fill_apt
+	end
+
 end
 
 class Person
@@ -48,4 +63,5 @@ class Person
 	end
 end
 
-holland_st = Building("")
+holland_st = Building("118 Holland", "Victorian", 3, [1,2,3]) #how do I write the array?
+
