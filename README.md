@@ -65,12 +65,12 @@ You will be creating an app that models the rental process. The premise is that 
 - In each of these apartments add people/renters by asking the user
   for the renter/person's attributes and what apartment they rent.
 - For each building calculate the average age of people living in this
-  building and print this value out.
+  building and print this value out. *Used a method for this*
 - For each apartment calculate the density people per square foot  of the people living
-  there. And print this value out.
+  there. And print this value out. *Used a method for this*
 - For each apartment in a building calculate how much each
   person/renter should pay for rent if they all split the rent
-  equally. And print this value out.
+  equally. And print this value out. *Used a method for this*
 
 
 
