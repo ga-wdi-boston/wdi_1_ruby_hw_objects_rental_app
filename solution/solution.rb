@@ -18,11 +18,11 @@
 class Building
 	attr_accessor :address, :style, :number_of_floors, :apartments
 
-	def initialize(address, style, floors, apartments)
+	def initialize(address, style, floors, all_apartments)
 		@address = address
 		@style = style
 		@number_of_floors = floors
-		# @apartments = []
+		@apartments = all_apartments
 		# @apartments << Apartment.new(6, 1625, 450, 2, 2)
 		# @apartments << Apartment.new(15, 3500, 750, 4, 4)
 		# @apartments << Apartment.new(30, 1425, 375, 2, 3)
@@ -34,7 +34,7 @@ class Building
 	end
 
 	def avg_age
-		@apartments.each |address, style, floors, apartments
+		
 	end
 
 end
@@ -51,7 +51,7 @@ class Apartment
 		@rent = rent
 		@square_feet = sqft
 		@number_of_bedrooms = bedrooms
-		# @renters = []
+		@a_person = renters
 		# @renters << Person.new("Marissa", 23, "lady", 6)
 		# @renters << Person.new("Yana", 25, "lady", 15)
 		# @renters << Person.new("Jen", 32, "lady", 30)
@@ -63,12 +63,13 @@ class Apartment
 	end
 
 	def people_density
-
+		# total sqft/number renters
+		@square_feet
 	end
 
-	def communal_rent
-		
-	end
+	# def communal_rent
+	# 	# total rent/number renters
+	# end
 
 end	
 
@@ -83,21 +84,28 @@ class Person
 	end
 end
 
-b1 = Building.new("199 South St.", "Midsize Brick", 3, 6)
+r1 = Person.new("Marissa", 23, "lady",1)
+r2 = Person.new("Yana", 25, "lady", 2)
+r3 = Person.new("Jen", 32, "lady", 3)
+r4 = Person.new("Danielle", 61, "lady", 4)
+r5 = Person.new("Haya", 47, "lady", 5)
+r6 = Person.new("Alina", 19, "lady", 6)
 
-a1 = Apartment.new(1, 1625, 450, 2, 2)
-a2 = Apartment.new(2, 1725, 450, 2, 2)
-a3 = Apartment.new(3, 1600, 450, 2, 2)
-a4 = Apartment.new(4, 1800, 450, 2, 4)
-a5 = Apartment.new(5, 1595, 450, 2, 2)
-a6 = Apartment.new(6, 1825, 450, 2, 2)
+a1 = Apartment.new(1, 1625, 450, 2, r1)
+a2 = Apartment.new(2, 1725, 450, 2, r2)
+a3 = Apartment.new(3, 1600, 450, 2, r3)
+a4 = Apartment.new(4, 1800, 450, 2, r4)
+a5 = Apartment.new(5, 1595, 450, 2, r5)
+a6 = Apartment.new(6, 1825, 450, 2, r6)
 
-r1 = Person.new("Marissa", 23, "lady", 6)
-r2 = Person.new("Yana", 25, "lady", 15)
-r3 = Person.new("Jen", 32, "lady", 30)
-r4 = Person.new("Danielle", "lady", 600, 1)
-r5 = Person.new("Haya", 47, "lady", 19)
-r6 = Person.new("Alina", 19, "lady", 23)
+apartments_array = [a1, a2, a3, a4, a5, a6]
+
+b1 = Building.new("199 South St.", "Midsize Brick", 3, apartments_array)
+# p r1
+# p a1
+p b1
+
+# renters = [r1, r2, r3, r4, r5, r6]
 
 
 
