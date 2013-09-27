@@ -71,14 +71,21 @@ class Apartment
 	def population
 		@ahash[:renters].length
 	end
-	# Method to divide the rent amon the number of tenants in an apartment. 
+# Method to divide the rent amon the number of tenants in an apartment. 
 	def rent_split
 		return @rent/(@ahash[:renters].length)
 	end
-	# Method to calculate the population density in an apartment.
+# Method to calculate the population density in an apartment.
 	def density
 		return @sqft/(@ahash[:renters].length)
 	end
+# Method calculate the total age of renters in an apartment.
+	def total_age
+		@ahash[:renters].each do |x|
+			return x #+ " is " + x[:age] + " years old."
+		end	
+	end
+
 end
 
 class Renter
@@ -115,12 +122,13 @@ b1 = Building.new("380 Mt Auburn", "House", 2, [1, 2])
 
 # Define apartments in building 1. 
 a11 = Apartment.new(1, 1400, 3200, 2, ["George", "Anna"])
-puts a11.rent_split
-puts a11.density
+# puts a11.rent_split
+# puts a11.density
+puts a11.total_age
 
 a12 = Apartment.new(2, 1400, 3200, 3, ["Erik", "Matt", "Claire"])
-puts a12.rent_split
-puts a12.density
+# puts a12.rent_split
+# puts a12.density
 
 # Define renters in building 1. 
 r111 = Renter.new("George", 50, "male")
