@@ -14,7 +14,7 @@ class Building
 def rent_per_building
   apartment_rents = []
   @apartments.each {|apartment| apartment_rents << "Rent per person at Apartment ##{apartment.number} is #{apartment.rent_per_person}"}
-  return apartment_rents
+  return apartment_rents.join(", ")
 end
 
 def average_age
