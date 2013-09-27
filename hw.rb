@@ -100,4 +100,6 @@ building1 = Building.new("101 Main Street","Traditional",3,[apartment1,apartment
 
 
 puts building1.average_age_occupants
+puts apartment5.suggested_rent
+puts apartment7.people_density
 
