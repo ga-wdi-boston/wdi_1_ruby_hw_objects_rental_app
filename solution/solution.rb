@@ -2,8 +2,6 @@ class Building
 	attr_accessor :address, :style, :num_floors, :apartments
 
 	def initialize(address, style, num_floors, apartments)
-		@apartments = []
-
 		@address = "address"
 		@style = "style"
 		@num_floors = num_floors
@@ -12,11 +10,6 @@ class Building
 
 	def to_s
 		"Apartments for rent inside!"
-	end
-
-	def fill_apt
-		@apartments.each do |apartment|
-			x = apt.index[0]
 	end
 
 ###### 
@@ -31,8 +24,8 @@ class Building
 
 	end
 
-	def age_total
-		@age_total = 0
+	def total_age
+		@total_age = 0
 		@renters.each do |renter|
 			x = renter.age
 			@total_age += x
@@ -43,10 +36,10 @@ class Building
 end
 
 class Apartment
-	attr_accessor :number, :rent, :sqft, :num_beds, :renters, :each_apt
+	attr_accessor :number, :rent, :sqft, :renters
 
+#I'm getting an error, wrong number of arguments. is it because i don't do anything with num_beds?
 	def initialize(number, rent, sqft, num_beds, renters)
-		renters = []
 		@number = number
 		@rent = rent
 		@sqft = sqft
@@ -66,7 +59,6 @@ class Apartment
 #density
 	def density
 		return (@sqft / @renters.length)
-		end
 	end
 
 end
@@ -74,7 +66,7 @@ end
 class Person
 	attr_accessor :name, :age, :gender
 
-	def initialize
+	def initialize(name, age, gender)
 		@name = "name"
 		@age = age
 		@gender = "gender"
@@ -100,7 +92,7 @@ justin = Person.new('Justin', 28, 'male'),
 kelsey = Person.new('Kelsey', 25, 'female'),
 louis = Person.new('Louis', 40, 'male'),
 michelle = Person.new('Michelle', 41, 'female'),
-nathan = Person.new('Nathan', 27, 'male') ]
+nathan = Person.new('Nathan', 27, 'male')
 
 # apartments
 apartment_1 = Apartment.new(1, 1100, 1400, [arthur, boris]),
@@ -110,6 +102,7 @@ apartment_4 = Apartment.new(4, 1800, 1800, 3, [isabelle, justin, kelsey]),
 apartment_5 = Apartment.new(5, 1800, 2, [louis, michelle, nathan])
 
 
-holland_st = Building.new("118 Holland", "Victorian", 3, [apartment1, apartment2, apartment3, apartment4, apartment5])
+holland_st = Building.new("118 Holland", "Victorian", 3, [apartment_1, apartment_2, apartment_3, apartment_4, apartment_5])
 
 puts holland_st.avg_age
+puts apartment_5.density
