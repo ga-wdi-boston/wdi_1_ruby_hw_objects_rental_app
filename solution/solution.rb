@@ -15,9 +15,8 @@ class Building
 ###### 
 	def avg_age
 		@apartments.each do |apt|
-			apartments.renters.each do |renter|
-				total_age += renter.age
-				total_renters += 1
+			apartments.each do |renter|
+				total_age += renter[2]
 			end
 		end
 		return (total_age / total_renters)
@@ -33,12 +32,18 @@ class Building
 		return @age_total
 	end
 
+	def total_renters
+		@renters.each do |renter|
+			total_renters = renters.count
+			return total_renters
+	end
+
+
 end
 
 class Apartment
-	attr_accessor :number, :rent, :sqft, :renters
+	attr_accessor :number, :rent, :sqft, :num_beds, :renters
 
-#I'm getting an error, wrong number of arguments. is it because i don't do anything with num_beds?
 	def initialize(number, rent, sqft, num_beds, renters)
 		@number = number
 		@rent = rent
@@ -95,11 +100,11 @@ michelle = Person.new('Michelle', 41, 'female'),
 nathan = Person.new('Nathan', 27, 'male')
 
 # apartments
-apartment_1 = Apartment.new(1, 1100, 1400, [arthur, boris]),
+apartment_1 = Apartment.new(1, 1100, 1400, 3, [arthur, boris]),
 apartment_2 = Apartment.new(2, 1500, 1500, 3, [caroline, daphne, ellen]),
 apartment_3 = Apartment.new(3, 1600, 1500, 3, [fred, george, harriet]),
 apartment_4 = Apartment.new(4, 1800, 1800, 3, [isabelle, justin, kelsey]),
-apartment_5 = Apartment.new(5, 1800, 2, [louis, michelle, nathan])
+apartment_5 = Apartment.new(5, 1800, 1800, 2, [louis, michelle, nathan])
 
 
 holland_st = Building.new("118 Holland", "Victorian", 3, [apartment_1, apartment_2, apartment_3, apartment_4, apartment_5])
