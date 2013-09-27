@@ -19,13 +19,17 @@ end
 
 def average_age
   people_array = []
-  @apartments.each {|apartment| people_array << apartment.people}
+  @apartments.each do |apartment| 
+    people_array << apartment.people
+  end
   flat_array = people_array.flatten
   age_array = []
-  flat_array.each {|person| age_array << person.age}
+  flat_array.each do |person| 
+    age_array << person.age
+  end
   sum = 0
   age_array.each { |b| sum += b }
-  average = sum / age_array.length
+  average = sum / age_array.count
   average
 end
 
@@ -41,13 +45,13 @@ class Apartment
   def initialize(number, rent, sqft, beds, people)
     @number = number.to_i
     @rent = rent.to_i
-    @sqft = sqft
+    @sqft = sqft.to_f
     @beds = beds.to_i
     @people = people
   end
 
   def peeps_per_ft
-    (@people.count.to_i)/(@sqft.to_f)
+    (@people.count.to_i)/(@sqft)
   end
 
   def rent_per_person
@@ -106,7 +110,6 @@ puts "The people per square feet at Apartment ##{apartment3.number} is #{apartme
 puts "The people per square feet at Apartment ##{apartment4.number} is #{apartment4.peeps_per_ft}"
 puts "The people per square feet at Apartment ##{apartment5.number} is #{apartment5.peeps_per_ft}"
 
-# puts "The breakdown of rent for #{building1.address} is #{building1.rent_per_person}"
 puts "For #{building1.address}...#{building1.rent_per_building}"
 puts "For #{building2.address}...#{building2.rent_per_building}"
 puts "For #{building3.address}...#{building3.rent_per_building}"
