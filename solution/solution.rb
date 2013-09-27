@@ -11,6 +11,12 @@ class Building
     @apartments = apartments
   end
 
+def rent_per_building
+  apartment_rents = []
+  @apartments.each {|apartment| apartment_rents << "Rent per person at Apartment ##{apartment.number} is #{apartment.rent_per_person}"}
+  return apartment_rents
+end
+
 def average_age
   people_array = []
   @apartments.each {|apartment| people_array << apartment.people}
@@ -44,6 +50,9 @@ class Apartment
     (@people.count.to_i)/(@sqft.to_f)
   end
 
+  def rent_per_person
+    @rent.to_i/(@people.count.to_i)
+  end
 end
 
 class Person
@@ -75,11 +84,11 @@ person13 = Person.new("Loretta", 23, "female")
 person14 = Person.new("Tim", 80, "male")
 person15 = Person.new("Mary", 70, "female")
 
-apartment1 = Apartment.new(1, 1000, 100, 1, [person1])
-apartment2 = Apartment.new(2, 2000, 250, 2, [person2, person3])
+apartment1 = Apartment.new(1, 2000, 100, 1, [person1])
+apartment2 = Apartment.new(2, 2500, 250, 2, [person2, person3])
 apartment3 = Apartment.new(3, 3000, 425, 3, [person4, person5, person6])
-apartment4 = Apartment.new(4, 4000, 750, 4, [person7, person8, person9, person10])
-apartment5 = Apartment.new(5, 5000, 1000, 5, [person11, person12, person13, person14, person15])
+apartment4 = Apartment.new(4, 3500, 750, 4, [person7, person8, person9, person10])
+apartment5 = Apartment.new(5, 4000, 1000, 5, [person11, person12, person13, person14, person15])
 
 building1 = Building.new("1 Main St", "Cool", 1, [apartment1])
 building2 = Building.new("2 Main St", "Super Cool", 2, [apartment2, apartment3])
@@ -96,3 +105,9 @@ puts "The people per square feet at Apartment ##{apartment2.number} is #{apartme
 puts "The people per square feet at Apartment ##{apartment3.number} is #{apartment3.peeps_per_ft}"
 puts "The people per square feet at Apartment ##{apartment4.number} is #{apartment4.peeps_per_ft}"
 puts "The people per square feet at Apartment ##{apartment5.number} is #{apartment5.peeps_per_ft}"
+
+# puts "The breakdown of rent for #{building1.address} is #{building1.rent_per_person}"
+puts "For #{building1.address}...#{building1.rent_per_building}"
+puts "For #{building2.address}...#{building2.rent_per_building}"
+puts "For #{building3.address}...#{building3.rent_per_building}"
+puts "For #{building4.address}...#{building4.rent_per_building}"
