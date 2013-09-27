@@ -5,8 +5,12 @@ class Building
     @style = style
     @num_floors = num_floors
     @apartments = []
-    # (1..num_apartments).each do |apt| 
-    #   @apartments << Apartment.new(apt, rand())
+    (1..num_apartments).each do |apt| 
+       @apartments << Apartment.new(apt + 100, 2500, 1300, (1..5).to_a.sample, 
+                                    Person.new(('a'..'z').to_a.sample, 
+                                               (18..65).to_a.sample, 
+                                               ['male', 'female'].sample))
+    end
   end
   def avg_age_of_tenants
     total_age, num_tenants = 0, 0.0
@@ -19,7 +23,7 @@ class Building
     total_age / num_tenants
   end
   def to_s
-    "This #{num_floors}-floor, #{@style}-style building has #{apartment.length} apartments and is located at #{address}."
+    "This #{num_floors}-floor, #{@style} building has #{apartments.length} apartments and is located at #{address}."
   end
 end
 
@@ -33,8 +37,10 @@ class Apartment
     @tenants = tenants
   end
   def people_per_sqft
+    @tenants.length / @sqft
   end
   def split_rent
+    @rent/@tenants.length.to_f
   end
   def to_s
     "Apartment \##{@number} is #{sqft} square feet, has #{num_beds} bedrooms, costs $#{rent}/month, and is currently occupied by #{tenants.length} people."
@@ -53,5 +59,5 @@ class Person
   end
 end
 
-a_building = Building.new('Main St', 'colonial', 3, 24)
-# puts a_building
+a_building = Building.new('1 Main St', 'residential', 3, 10)
+puts a_building
