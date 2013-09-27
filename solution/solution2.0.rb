@@ -1,4 +1,5 @@
 class Building
+  @@buildings = []
 
   attr_accessor :building_name, 
                 :address, 
@@ -25,6 +26,7 @@ class Building
     @building_average_age = average_age
     @description = to_s
     @to_s = to_s
+    @@buildings << @description
   end
 
   def to_s
@@ -82,9 +84,14 @@ class Building
     return @building_average_age
   end
 
+  def self.all
+    @@buildings
+  end
+
 end
 
 class Apartment
+  @@apartments = []
 
   attr_accessor :number,
                 :rent,
@@ -93,19 +100,15 @@ class Apartment
                 :renters,
                 :description, 
                 :apartment_name,
-                
                 :average_age,
                 :total_age,
-
                 :description,
                 :to_s,
-
                 :population,
                 :total_renters,
                 :renter_list,
                 :rent_per_person,
                 :density
-
   
   def initialize(number)
     @number = number
@@ -116,15 +119,12 @@ class Apartment
     @total_renters = @population
     @total_age = total_age
     @average_age = average_age
-
-
     @renter_list = renter_list
     @density = density
     @rent_per_person = rent_per_person
-
     @description = to_s
     @to_s = to_s
-
+    @@apartments << @description
     end
 
   def to_s
@@ -182,6 +182,10 @@ class Apartment
     @square_feet = 400 + rand(400)
   end
 
+  def self.all
+    @@apartments
+  end
+
   def auto_rent
     @rent = @square_feet * (2.5 + rand(1.0))
   end
@@ -193,6 +197,7 @@ class Apartment
 end
 
 class Person
+  @@people = []
 
   attr_accessor :name, 
                 :age,
@@ -210,6 +215,7 @@ class Person
     @apartment = apartment
     @description = to_s
     @to_s = to_s
+    @@people << @description
   end
 
   def randomize_name
@@ -236,9 +242,14 @@ class Person
     @description = "Apt #{@apartment}: #{@name}, #{@age}-year old #{job}, identifies as #{@gender}."
   end
 
+  def self.all
+    @@people
+  end
+
+
 end
 
-
+# creating new buildings (which make apartments (which make people)):
 b1 = Building.new("Highland Towers")
 b2 = Building.new("Binghamton Terrace")
 b3 = Building.new("Crabsbury Gardens")
@@ -254,3 +265,9 @@ puts b2.list_of_renters
 puts b3
 puts b3.apartments
 puts b3.list_of_renters
+
+#class methods!!  #practice
+
+puts Building.all
+puts Apartment.all
+puts Person.all
