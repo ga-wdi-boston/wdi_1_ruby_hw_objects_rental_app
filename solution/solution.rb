@@ -79,12 +79,16 @@ class Apartment
 	def density
 		return @sqft/(@ahash[:renters].length)
 	end
-# Method calculate the total age of renters in an apartment.
-	def total_age
-		@ahash[:renters].each do |x|
-			return x #+ " is " + x[:age] + " years old."
-		end	
-	end
+
+	def 
+# Method to calculate the total age of renters in an apartment.
+	# def total_age
+	# 	cumulative_age = 0.0
+	# 	@ahash.each do |x|
+	# 		cumulative_age += x.age	
+	# 		return cumulative_age
+	# 	end	
+	# end
 
 end
 
