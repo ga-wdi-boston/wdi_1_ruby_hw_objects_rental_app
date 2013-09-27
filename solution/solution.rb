@@ -6,6 +6,9 @@ class Building
     @num_floors = num_floors
     @apartments = apartments
   end
+  def to_s
+    "This #{num_floors}-floor, #{@style}-style building has #{apartment.length} apartments and is located at #{address}."
+  end
 end
 
 class Apartment
@@ -17,6 +20,9 @@ class Apartment
     @num_beds = num_beds
     @renters = renters
   end
+  def to_s
+    "Apartment \##{@number} is #{sqft} square feet, has #{num_beds} apartments, costs $#{rent}/month, and is occupied by #{renters.length} people."
+  end
 end
 
 class Person
@@ -25,5 +31,8 @@ class Person
     @name = name
     @age = age
     @gender = gender
+  end
+  def to_s
+    "Name: #{@name} Age: #{@age} Gender: #{@gender}"
   end
 end
