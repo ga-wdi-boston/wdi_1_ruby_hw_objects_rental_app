@@ -7,21 +7,42 @@ class Building
                 :num_of_apartments, 
                 :apartments,
                 :description,
-                :building_average_age
+                :building_average_age,
+                :average_rent,
+                :list_of_renters
 
   def initialize(name)
     @building_name = name
-    randomize_address
-    randomize_style
+    @address = randomize_address
+    @style = randomize_style
     @num_of_floors = (2 + rand(4))
     @num_of_apartments = @num_of_floors * (rand(4) + 1)
-    auto_populate_apartments
+    @apartments = auto_populate_apartments
     @average_age = average_age
+    @average_rent = average_rent
+    @list_of_renters = print_renter_list
     @description = to_s
   end
 
   def to_s
-    @description = "#{@building_name}, #{@address}, #{@num_of_apartments} apartments, built in the #{@style} style, with #{@num_of_floors} floors. Average age: #{@building_average_age}"
+    @description = "#{@building_name}, #{@address}, #{@num_of_apartments} apartments, built in the #{@style} style, with #{@num_of_floors} floors. Average age: #{@building_average_age}. Average rent: $#{@average_rent}"
+  end
+
+  def average_rent
+    total_rent = 0
+    @apartments.each do |x|
+      total_rent += x.rent
+    end
+    @average_rent = total_rent / @num_of_apartments
+    return @average_rent
+  end
+
+  def print_renter_list
+    @list_of_renters = []
+    @apartments.each do |x|
+      @list_of_renters << x.renter_list
+    end
+    return @list_of_renters
   end
 
   def auto_populate_apartments
@@ -74,23 +95,43 @@ class Apartment
                 :average_age,
                 :total_age,
                 :total_renters
+                :renter_list
   
   def initialize(buiding, number)
     @building = building
     @number = number
     @apartment_name = "#{@building} #{@number}"
-    auto_square_feet
-    auto_rent
+    @square_feet = auto_square_feet
+    @rent = auto_rent
     @renters = auto_populate
     @population = @renters.length
     @total_renters = @population
     @total = total_age
     @description = to_s
+    @renter_list = renter_list
+    @density = density
+    @rent_per_person = rent_per_person
     end
 
   def to_s
-    @description = "#{@apartment_name}, #{@square_feet} square feet, rent: $#{@rent} per month, #{@population} renters, average age: #{average_age}"
+    @description = "#{@apartment_name}, #{@square_feet} square feet, rent: $#{@rent} per month, #{@population} renters, average age: #{average_age}, density #{density} renters per square foot, rent per person: $#{rent_per_person}."
     return @description
+  end
+
+  def rent_per_person
+    @rent_per_person = @rent / @total_renters
+  end
+
+  def density
+    @density = @total_renters.to_f / @square_feet.to_f
+  end
+
+  def renter_list
+    @renter_list = []
+    @renters.each do |x|
+      @renter_list << x.description
+    end
+    return @renter_list
   end
 
   def total_age
@@ -194,10 +235,12 @@ b3 = Building.new("Crabsbury Gardens")
 
 puts b1
 puts b1.apartments
+puts b1.print_renter_list
 
 puts b2
 puts b2.apartments
+puts b2.print_renter_list
 
 puts b3
 puts b3.apartments
-
+puts b3.print_renter_list
