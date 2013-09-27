@@ -1,5 +1,5 @@
 class Building
-	attr_accessor :address, :style, :num_floors, :apartments
+	# attr_accessor :address, :style, :num_floors, :apartments
 
 	def initialize(address, style, num_floors, apartments)
 		@address = "address"
@@ -13,31 +13,31 @@ class Building
 	end
 
 ###### 
-	def avg_age
-		@apartments.each do |apt|
-			apartments.each do |renter|
-				total_age += renter[2]
-			end
-		end
-		return (total_age / total_renters)
-
-	end
 
 	def total_age
 		@total_age = 0
 		@renters.each do |renter|
-			x = renter.age
-			@total_age += x
+			age = renter[2]
+			@total_age += age
 		end
-		return @age_total
+		return @total_age
 	end
 
-	def total_renters
+def total_renters
 		@renters.each do |renter|
 			total_renters = renters.count
 			return total_renters
 	end
 
+	def avg_age
+		@apartments.each do |apt|
+			apartments.each do |renter|
+				total_age += renter[2].to_i
+			end
+		end
+		return (total_age / total_renters)
+
+	end
 
 end
 
@@ -109,5 +109,4 @@ apartment_5 = Apartment.new(5, 1800, 1800, 2, [louis, michelle, nathan])
 
 holland_st = Building.new("118 Holland", "Victorian", 3, [apartment_1, apartment_2, apartment_3, apartment_4, apartment_5])
 
-puts holland_st.avg_age
-puts apartment_5.density
+end
