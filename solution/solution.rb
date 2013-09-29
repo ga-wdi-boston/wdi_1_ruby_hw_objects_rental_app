@@ -14,15 +14,25 @@ class Building
 	end
 
 	def avg_age
-		total_age = 0
-		total_renters = 0
+		renter_array = []
 		@apartments.each do |apartment|
-			apartment.renters.each do |renter|
-				total_age += renter.age
-				total_renters += 1
-			end
+			renter_array << apartment.renters
 		end
-		return (total_age / total_renters)
+			flat_array = renter_array.flatten
+			age_array = []
+			flat_array.each do |renter|
+				age_array << renter.age
+			end
+			total_age = 0
+			age_array.each do |age| total_age += age_array
+			end
+
+		# 	apartment.renters.each do |renter|
+		# 		total_age += renter.age
+		# 		total_renters += 1
+		# 	end
+		# end
+		return (total_age / age_array.count)
 	end
 
 end
@@ -33,7 +43,7 @@ class Apartment
 	def initialize(number, rent, sqft, num_beds, renters)
 		@number = number.to_i
 		@rent = rent.to_i
-		@sqft = sqft.to_i
+		@sqft = sqft.to_f
 		@num_beds = num_beds.to_i
 		@renters = renters
 	end
