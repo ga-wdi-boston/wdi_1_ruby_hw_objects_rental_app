@@ -86,6 +86,7 @@ base_rent = 1000
 base_sqft = 1000
 rent_mult = 0
 sqft_mult = 0
+
 6.times do |i|
   rent_mult = rand(7..10)/10.0
   sqft_mult = rand(7..10)/10.0
@@ -101,7 +102,7 @@ b1.apartments.each do |apt|
   (rand(0..6)).times do |i|
     age = 20 + rand(0..60)
     gender = GENDER[rand(0..1)]
-    name = Person::MALE_NAMES[rand(0..Person::MALE_NAMES.size-1)] if gender == 'male'
+    name = Person::MALE_NAMES[rand(Person::MALE_NAMES.size-1)] if gender == 'male'
     name = Person::FEMALE_NAMES[rand(0..Person::FEMALE_NAMES.size-1)] if gender == 'female'
     apt.renters << Person.new(name,age, gender)
     apt.num_beds = apt.renters.size
