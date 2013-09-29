@@ -1,42 +1,28 @@
+
 class Building
-	# attr_accessor :address, :style, :num_floors, :apartments
+	attr_accessor :address, :style, :num_floors, :apartments
 
 	def initialize(address, style, num_floors, apartments)
-		@address = "address"
-		@style = "style"
-		@num_floors = num_floors
+		@address = address.to_s
+		@style = style.to_s
+		@num_floors = num_floors.to_i
 		@apartments = apartments
 	end
 
 	def to_s
-		"Apartments for rent inside!"
-	end
-
-###### 
-
-	def total_age
-		@total_age = 0
-		@renters.each do |renter|
-			age = renter[2]
-			@total_age += age
-		end
-		return @total_age
-	end
-
-def total_renters
-		@renters.each do |renter|
-			total_renters = renters.count
-			return total_renters
+		"This is a building at address #{@address} of style #{@style} with #{@num_floors} and #{@apartments} apartments."
 	end
 
 	def avg_age
-		@apartments.each do |apt|
-			apartments.each do |renter|
-				total_age += renter[2].to_i
+		total_age = 0
+		total_renters = 0
+		@apartments.each do |apartment|
+			apartment.renters.each do |renter|
+				total_age += renter.age
+				total_renters += 1
 			end
 		end
 		return (total_age / total_renters)
-
 	end
 
 end
@@ -45,15 +31,15 @@ class Apartment
 	attr_accessor :number, :rent, :sqft, :num_beds, :renters
 
 	def initialize(number, rent, sqft, num_beds, renters)
-		@number = number
-		@rent = rent
-		@sqft = sqft
-		@num_beds = num_beds
+		@number = number.to_i
+		@rent = rent.to_i
+		@sqft = sqft.to_i
+		@num_beds = num_beds.to_i
 		@renters = renters
 	end
 
 	def to_s
-		"Check me out, I'm an apartment to live in."
+		"This is apartment number #{number}, with #{sqft} square feet, #{num_beds} beds, and a rent of #{rent}. The occupants are #{renters}."
 	end
 
 #rent per person if split evenly
@@ -72,13 +58,13 @@ class Person
 	attr_accessor :name, :age, :gender
 
 	def initialize(name, age, gender)
-		@name = "name"
-		@age = age
-		@gender = "gender"
+		@name = name.to_s
+		@age = age.to_i
+		@gender = gender.to_s
 	end
 
 	def to_s
-		"I want to rent an apartment, please."
+		puts "My name is #{name} and I'm a #{age} year old #{gender}."
 	end
 
 end
@@ -100,13 +86,17 @@ michelle = Person.new('Michelle', 41, 'female'),
 nathan = Person.new('Nathan', 27, 'male')
 
 # apartments
-apartment_1 = Apartment.new(1, 1100, 1400, 3, [arthur, boris]),
-apartment_2 = Apartment.new(2, 1500, 1500, 3, [caroline, daphne, ellen]),
-apartment_3 = Apartment.new(3, 1600, 1500, 3, [fred, george, harriet]),
-apartment_4 = Apartment.new(4, 1800, 1800, 3, [isabelle, justin, kelsey]),
-apartment_5 = Apartment.new(5, 1800, 1800, 2, [louis, michelle, nathan])
+apartment_1 = Apartment.new("1", 1100, 1400, 3, [arthur, boris]),
+apartment_2 = Apartment.new("2", 1500, 1500, 3, [caroline, daphne, ellen]),
+apartment_3 = Apartment.new("3", 1600, 1500, 3, [fred, george, harriet]),
+apartment_4 = Apartment.new("4", 1800, 1800, 3, [isabelle, justin, kelsey]),
+apartment_5 = Apartment.new("5", 1800, 1800, 2, [louis, michelle, nathan])
 
-
+# building
 holland_st = Building.new("118 Holland", "Victorian", 3, [apartment_1, apartment_2, apartment_3, apartment_4, apartment_5])
 
-end
+puts holland_st.address
+puts holland_st.style
+puts apartment_4.renters
+puts holland_st.avg_age
+
