@@ -1,3 +1,5 @@
+require 'pry'
+
 class Building
 	attr_accessor :address, :style, :num_floors, :apartments
 
@@ -5,30 +7,20 @@ class Building
 		@address = address
 		@style = style
 		@num_floors = num_floors
-		@apartments = apartments
-		@bhash = Hash[address: address, style: style, num_floors: num_floors, apartments: apartments]
+		@apartments = {}
 	end
 
 	def to_s
 		"Building: #{address}, #{style}, #{num_floors}, #{apartments}"
 	end
 
-	def address
-		@bhash[:address]
+	def avg_age
+		age = 0
+		pop = 0
+		@apartments.each {|key, value| age = age + value.total_age}
+		@apartments.each {|key, value| pop = pop + value.population}
+		return (age.to_f / pop.to_f)
 	end
-
-	def style
-		@bhash[:style]
-	end
-
-	def num_floors
-		@bhash[:num_floors]
-	end
-
-	def apartments
-		@bhash[:apartments]
-	end
-
 
 end
 
@@ -40,56 +32,30 @@ class Apartment
 		@rent = rent
 		@sqft = sqft
 		@num_beds = num_beds
-		@renters = renters
-		@ahash = Hash[number: number, rent: rent, sqft: sqft, num_beds: num_beds, renters: renters]
+		@renters = {}
 	end
 
 	def to_s
 		"Apartment: #{number}, #{rent}, #{sqft}, #{num_beds}, #{renters}"
 	end
-	
-	def number
-		@ahash[:number]
-	end
-	
-	def rent
-		@ahash[:rent]
-	end
-	
-	def sqft
-		@ahash[:sqft]
-	end
-	
-	def num_beds
-		@ahash[:num_beds]
-	end
-
-	def renters
-		@ahash[:renters]
-	end
 
 	def population
-		@ahash[:renters].length
+		@renters.length
 	end
-# Method to divide the rent amon the number of tenants in an apartment. 
+# Method to divide the rent among the number of tenants in an apartment. 
 	def rent_split
-		return @rent/(@ahash[:renters].length)
+		return @rent/(@renters.length)
 	end
 # Method to calculate the population density in an apartment.
 	def density
-		return @sqft/(@ahash[:renters].length)
+		return @sqft/(@renters.length)
 	end
-
-	def 
-# Method to calculate the total age of renters in an apartment.
-	# def total_age
-	# 	cumulative_age = 0.0
-	# 	@ahash.each do |x|
-	# 		cumulative_age += x.age	
-	# 		return cumulative_age
-	# 	end	
-	# end
-
+# Method to calculate total age of an apartment. 
+	def total_age
+		sum = 0 
+		@renters.each { |key, value| sum = sum + value.age }
+		return sum
+	end
 end
 
 class Renter
@@ -99,52 +65,38 @@ class Renter
 		@name = name
 		@age = age
 		@gender = gender
-		@rhash = Hash[name: name, age: age, gender: gender]
 	end
 
 	def to_s
 		"Renter: #{name}, #{age}, #{gender}"
 	end
 
-	def name
-		@rhash[:name]
-	end
-
-	def age
-		@rhash[:age]
-	end
-
-	def gender
-		@rhash[:gender]
-	end
-
 end
 
 # Define Building 1. 
 b1 = Building.new("380 Mt Auburn", "House", 2, [1, 2])
-#puts b1.apartments[1]
 
 # Define apartments in building 1. 
-a11 = Apartment.new(1, 1400, 3200, 2, ["George", "Anna"])
-# puts a11.rent_split
-# puts a11.density
-puts a11.total_age
-
-a12 = Apartment.new(2, 1400, 3200, 3, ["Erik", "Matt", "Claire"])
-# puts a12.rent_split
-# puts a12.density
+b1.apartments["a11"] =  Apartment.new(1, 1400, 3200, 2, {})
+b1.apartments["a12"] =  Apartment.new(2, 1400, 3200, 3, {})
 
 # Define renters in building 1. 
-r111 = Renter.new("George", 50, "male")
+b1.apartments["a11"].renters["George"] = Renter.new("George", 50, "male")
+b1.apartments["a11"].renters["Anna"] = Renter.new("Anna", 40, "female")
 
-r112 = Renter.new("Anna", 40, "female")
+b1.apartments["a12"].renters["Erik"] = Renter.new("Erik", 31, "male")
+b1.apartments["a12"].renters["Matt"] = Renter.new("Matt", 34, "male")
+b1.apartments["a12"].renters["Claire"] = Renter.new("Claire", 23, "female")
 
-r121 = Renter.new("Matt", 33, "male")
+# p b1.apartments
 
-r122 = Renter.new("Erik", 32, "male")
+# p b1.apartments["a11"].density
+# p b1.apartments["a12"].density
 
-r123 = Renter.new("Claire", 23, "female")
+# p b1.apartments["a11"].rent_split
+# p b1.apartments["a12"].rent_split 
 
-# Test hash. 
-# h = {"a" => 1, "b" => 2, "b" => 3, "b" => 4, "c" => 5, "c" => 6}
-# puts h.each_key{|b|}
+#binding.pry
+#p b1.apartments["a12"].total_age 
+
+# p b1.avg_age
