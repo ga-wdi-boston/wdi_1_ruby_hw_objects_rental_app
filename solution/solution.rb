@@ -6,7 +6,7 @@ class Building
 		@address = address.to_s
 		@style = style.to_s
 		@num_floors = num_floors.to_i
-		@apartments = []
+		@apartments = apartments
 	end
 
 	def to_s
@@ -35,12 +35,20 @@ class Apartment
 		@rent = rent.to_i
 		@sqft = sqft.to_i
 		@num_beds = num_beds.to_i
-		@renters = []
+		@renters = renters
 	end
 
 	def to_s
 		"I'm apartment number #{number} and I'm #{sqft}sqft with a total of #{num_beds} bedrooms. 
 		I have #{renters} tenants living in me at the moment, and they pay #{rent} to live in me! "
+	end
+
+	def av_sqft
+		 @sqft.to_f / @renters.length
+	end 
+
+	def av_rent 
+		@rent.to_f / @renters.length
 	end
 end
 
@@ -48,9 +56,9 @@ class Person
 	attr_accessor :name , :age , :gender 
 
 	def initialize(name, age, gender)
-		@name = name.to_s
-		@age = age.to_i
-		@gender = gender.to_s
+		@name = name
+		@age = age
+		@gender = gender
 	end
 
 	def to_s
@@ -99,4 +107,19 @@ b2 = Building.new("200 main st", "brownstone" , "3", [a7,a8,a9])
 b3 = Building.new("300 main st", "brownstone" , "3", [a10,a11])
 
 
-puts "#{b1.address} and age is #{b1.average_age}"
+puts " For the building 1, at #{b1.address} and the average age of tenents is age is #{b1.average_age}"
+puts " For the building 2, at #{b2.address} and the average age of tenents is age is #{b2.average_age}"
+puts " For the building 3, at #{b3.address} and the average age of tenents is age is #{b3.average_age}"
+
+puts "The average square feet per person in apartment 1 is #{a1.av_sqft}"
+puts "The average square feet per person in apartment 2 is #{a2.av_sqft}"
+puts "The average square feet per person in apartment 3 is #{a3.av_sqft}"
+puts "The average square feet per person in apartment 3 is #{a4.av_sqft}"
+
+puts "The rent per person in apartment 1 is $#{a1.av_rent}"
+puts "The rent per person in apartment 2 is $#{a2.av_rent}"
+puts "The rent per person in apartment 3 is $#{a3.av_rent}"
+puts "The rent per person in apartment 4 is $#{a4.av_rent}"
+
+
+
