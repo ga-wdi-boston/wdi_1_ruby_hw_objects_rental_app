@@ -9,7 +9,7 @@ class Building
   end
   
   def avg_age_of_tenants
-    tenants.map(&:age).reduce(:+) / tenants.size
+    tenants.map(&:age).reduce(:+) / tenants.size.to_f
   end
 
   def tenants
@@ -48,7 +48,7 @@ class Apartment
   end
 
   def to_s
-    "Apartment \##{@number} is #{sqft} square feet, has #{num_beds} bedrooms, costs $#{rent}/month, and is currently occupied by #{@tenants.length} people."
+    "Apartment \##{@number} is #{'%.2f' % sqft} square feet, has #{num_beds} bedrooms, costs $#{'%.2f' % rent}/month, and is currently occupied by #{@tenants.length} people."
   end
 end
 
@@ -108,14 +108,14 @@ b1.apartments.each do |apt|
 end
 
 
-puts "\nAverage age for the building at \"#{b1.address}\" is #{b1.avg_age_of_tenants}"
+puts "\nAverage age for the building at \"#{b1.address}\" is #{'%.2f' % b1.avg_age_of_tenants}"
 
 puts "This building has #{b1.apartments.length} apartments\n\n"
 
 b1.apartments.each do |apt|
-  puts "For apartment number #{apt.number} the rent is #{apt.rent}."
-  puts "The fair rent for each of the #{apt.tenants.length} tenants is #{apt.split_rent}\n"
-  puts "Apartment density is (sqft/num of renters) #{apt.sqft}/#{apt.tenants.length} = #{apt.sqft_per_person} sqft/tenant\n\n"
+  puts "For apartment number #{apt.number} the rent is #{'$%.2f' % apt.rent}."
+  puts "The fair rent for each of the #{apt.tenants.length} tenants is #{'$%.2f' % apt.split_rent}\n"
+  puts "Apartment density is (sqft/num of renters) #{apt.sqft}/#{apt.tenants.length} = #{'%.2f' % apt.sqft_per_person} sqft/tenant\n\n"
 end
 
-puts "The building density is #{b1.sqft_per_tenant} sqft/tenant"
+puts "The building density is #{'%.2f' % b1.sqft_per_tenant} sqft/tenant"
