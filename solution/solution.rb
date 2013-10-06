@@ -45,7 +45,7 @@ class Person
 	end
 end 
 
-#address, style, num_floors, apartments)
+
 b1 = Building.new("100 main st", "brownstone" , "3", [a1,a2,a3,a4,a5,a6])
 b2 = Building.new("200 main st", "brownstone" , "3", [a7,a8,a9])
 b3 = Building.new("300 main st", "brownstone" , "3", [a10,a11])
@@ -61,5 +61,24 @@ a8 = Apartment.new(101, 1100, 950, 2, [])
 a9 = Apartment.new(102, 900, 800, 1, [])
 a10 = Apartment.new(103, 850, 700, 1, [])
 a11 = Apartment.new(104, 770, 600, 1, [])
-
-
+#:name , :age , :gender 
+p1 = Person.new("Amal", 26, "woman")
+p2 = Person.new("Amal", 26, "woman")
+p3 = Person.new("Amal", 26, "woman")
+p4 = Person.new("Amal", 26, "woman")
+p5 = Person.new("Farhiya", 29, "woman")
+p6 = Person.new("Mukhtar", 28, "man")
+p7 = Person.new("Adan", 27, "man")
+p8 = Person.new("Aniso", 32, "woman")
+p9 = Person.new("Shukri", 28, "woman")
+p10 = Person.new("Zahra", 24, "woman")
+p11 = Person.new("Neeneele", 29, "man")
+p12 = Person.new("Amal", 26, "woman")
+p13= Person.new("Amal", 26, "woman")
+p14= Person.new("Amal", 26, "woman")
+p15= Person.new("Amal", 26, "woman")
+p16= Person.new("Amal", 26, "woman")
+p17= Person.new("Amal", 26, "woman")
+p18= Person.new("Amal", 26, "woman")
+p19= Person.new("Amal", 26, "woman")
+p20= Person.new("Amal", 26, "woman")
