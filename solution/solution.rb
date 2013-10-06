@@ -8,17 +8,25 @@ class Building
 		@apartments = []
 	end
 
+	def to_s
+		"I'm a #{style}building on #{address} and I have #{num_floors} floors and I have a total of #{apartments} in me. Yaaay!"
+	end 
 end
 
 class Apartment 
-	attr_accessor :number , :rent , :sqft , :num_beds
+	attr_accessor :number , :rent , :sqft , :num_beds, :renters
 
-	def initialize(number, rent, sqft, num_beds)
+	def initialize(number, rent, sqft, num_beds, renters)
 		@number = number.to_i
 		@rent = rent.to_i
 		@sqft = sqft.to_i
 		@num_beds = num_beds.to_i
 		@renters = []
+	end
+
+	def to_s
+		"I'm apartment number #{number} and I'm #{sqft}sqft with a total of #{num_beds} bedrooms. 
+			I have #{renters} tenants living in me at the moment, and they pay #{rent} to live in me! "
 	end
 end
 
@@ -31,15 +39,27 @@ class Person
 		@gender = gender.to_s
 		
 	end
-end 
-#address, style, num_floors, apartments)
-b1 = Building.new("100 main st", "brownstone" , "3", "6")
-b2 = Building.new("200 main st", "brownstone" , "3", "5")
-b3 = Building.new("300 main st", "brownstone" , "3", "4")
-b4 = Building.new("400 main st", "brownstone" , "3", "3")
-b5 = Building.new("500 cool st", "modern" , "10", "100")
-b1 = Building.new("600 main st", "modern" , "9", "90")
-b1 = Building.new("700 main st", "modern" , "8", "80")
 
+	def to_s
+		"Hi! I'm #{name} and I'm a #{gender} who is #{age} years old. Nice to meet you!"
+	end
+end 
+
+#address, style, num_floors, apartments)
+b1 = Building.new("100 main st", "brownstone" , "3", [a1,a2,a3,a4,a5,a6])
+b2 = Building.new("200 main st", "brownstone" , "3", [a7,a8,a9])
+b3 = Building.new("300 main st", "brownstone" , "3", [a10,a11])
+
+a1 = Apartment.new(101, 2000, 1800, 4, [])
+a2 = Apartment.new(102, 2000, 1800, 4, [])
+a3 = Apartment.new(202, 1800, 1500, 3, [])
+a4 = Apartment.new(203, 1800, 1500, 3, [])
+a5 = Apartment.new(204, 1700, 1400, 3, [])
+a6 = Apartment.new(205, 1500, 1200, 3, [])
+a7 = Apartment.new(301, 1200, 1000, 2, [])
+a8 = Apartment.new(101, 1100, 950, 2, [])
+a9 = Apartment.new(102, 900, 800, 1, [])
+a10 = Apartment.new(103, 850, 700, 1, [])
+a11 = Apartment.new(104, 770, 600, 1, [])
 
 
