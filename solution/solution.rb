@@ -1,4 +1,3 @@
-
 class Building
 	attr_accessor :address, :style, :num_floors, :apartments
 
@@ -6,33 +5,19 @@ class Building
 		@address = address.to_s
 		@style = style.to_s
 		@num_floors = num_floors.to_i
-		@apartments = apartments
-	end
-
-	def to_s
-		"This is a building at address #{@address} of style #{@style} with #{@num_floors} and #{@apartments} apartments."
+		@apartments = []
 	end
 
 	def avg_age
-		renter_array = []
-		@apartments.each do |apartment|
-			renter_array << apartment.renters
+		sum = 0
+		tenants = 0
+		apartments.each do |apartment|
+			apartment.renters.each do |x|
+				sum += x.age
+				tenants += 1
+			end
 		end
-			flat_array = renter_array.flatten
-			age_array = []
-			flat_array.each do |renter|
-				age_array << renter.age
-			end
-			total_age = 0
-			age_array.each do |age| total_age += age_array
-			end
-
-		# 	apartment.renters.each do |renter|
-		# 		total_age += renter.age
-		# 		total_renters += 1
-		# 	end
-		# end
-		return (total_age / age_array.count)
+		sum.to_f / tenants.to_f
 	end
 
 end
@@ -42,24 +27,33 @@ class Apartment
 
 	def initialize(number, rent, sqft, num_beds, renters)
 		@number = number.to_i
-		@rent = rent.to_i
+		@rent = rent.to_f
 		@sqft = sqft.to_f
 		@num_beds = num_beds.to_i
-		@renters = renters
+		@renters = []
 	end
 
 	def to_s
 		"This is apartment number #{number}, with #{sqft} square feet, #{num_beds} beds, and a rent of #{rent}. The occupants are #{renters}."
 	end
 
+#redundant
+	def renters
+		@renters
+	end
+
 #rent per person if split evenly
 	def rent_each
-		return (@rent / @renters.length)
+		return (@rent.to_f / @renters.size)
 	end
 
 #density
 	def density
-		return (@sqft / @renters.length)
+		return (@sqft.to_f / @renters.size)
+	end
+
+	def to_s
+		"This is apartment number #{number}, with #{sqft} square feet, #{num_beds} beds, and a rent of #{rent}. The occupants are #{renters}."
 	end
 
 end
@@ -69,17 +63,17 @@ class Person
 
 	def initialize(name, age, gender)
 		@name = name.to_s
-		@age = age.to_i
+		@age = age
 		@gender = gender.to_s
 	end
 
 	def to_s
-		puts "My name is #{name} and I'm a #{age} year old #{gender}."
+		"My name is #{name} and I'm a #{age} year old #{gender}."
 	end
 
 end
 
-# tenants- but I don't want to assign them names, because that's superfluous
+# tenants
 arthur = Person.new('Arthur', 35, 'male'),
 boris = Person.new('Boris', 83, 'male'),
 caroline = Person.new('Caroline', 12, 'female'),
@@ -96,17 +90,11 @@ michelle = Person.new('Michelle', 41, 'female'),
 nathan = Person.new('Nathan', 27, 'male')
 
 # apartments
-apartment_1 = Apartment.new("1", 1100, 1400, 3, [arthur, boris]),
+apartment_1 = Apartment.new("1", 1100, 1400, 2, [arthur, boris]),
 apartment_2 = Apartment.new("2", 1500, 1500, 3, [caroline, daphne, ellen]),
 apartment_3 = Apartment.new("3", 1600, 1500, 3, [fred, george, harriet]),
 apartment_4 = Apartment.new("4", 1800, 1800, 3, [isabelle, justin, kelsey]),
-apartment_5 = Apartment.new("5", 1800, 1800, 2, [louis, michelle, nathan])
+apartment_5 = Apartment.new("5", 1800, 1800, 3, [louis, michelle, nathan])
 
 # building
 holland_st = Building.new("118 Holland", "Victorian", 3, [apartment_1, apartment_2, apartment_3, apartment_4, apartment_5])
-
-puts holland_st.address
-puts holland_st.style
-puts apartment_4.renters
-puts holland_st.avg_age
-
